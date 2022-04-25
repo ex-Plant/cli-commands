@@ -1,0 +1,592 @@
+//// Shortcuts
+
+Tab	Auto-complete file and folder names
+Ctrl + A	Go to the beginning of the line you're currently typing on
+Ctrl + E	Go to the end of the line you're currently typing on
+Ctrl + U	Clear the line before the cursor
+Ctrl + K	Clear the line after the cursor
+Ctrl + W	Delete the word before the cursor
+Ctrl + T	Swap the last two characters before the cursor
+Esc + T	Swap the last two words before the cursor
+Ctrl + L	Clear the screen
+Ctrl + C	Kill whatever you're running
+Ctrl + D	Exit the current shell
+Option + →	Move cursor one word forward
+Option + ←	Move cursor one word backward
+Ctrl + F	Move cursor one character forward
+Ctrl + B	Move cursor one character backward
+Ctrl + Y	Paste whatever was cut by the last command
+Ctrl + Z	Puts whatever you're running into a suspended background process
+Ctrl + _	Undo the last command
+Option + Shift + Cmd + C	Copy plain text
+Shift + Cmd + V	Paste the selection
+exit	End a shell session
+
+//// Basics
+
+/ (Forward Slash)	Top level directory
+. (Single Period)	Current directory
+.. (Double Period)	Parent directory
+~ (Tilde)	Home directory
+sudo [command]	Run command with the security privileges of the super user
+nano [file]	Opens the Terminal editor
+open [file]	Opens a file
+[command] -h	Get help about a command
+man [command]	Show the help manual of the command
+
+//// Change Directory
+
+cd	Home directory
+cd [folder]	Change directory, e.g. cd Documents
+cd ~	Home directory
+cd/	Root of the drive
+cd -	Previous directory or folder you last browsed
+pwd	Show your working directory
+cd..	Move up to the parent directory
+cd../..	Move up two levels
+
+////List Directory Contents
+
+ls	Display the name of files and subdirectories in the directory
+ls -C	Force multi-column output of the listing
+ls -a	List all entries including those with .(period) and ..(double period)
+ls -1	Output the list of files in one entry per line format
+ls -F	Display a / (slash) immediately after each path that is a directory, * (asterisk) after executable programs or scripts, and @ after a symbolic link
+ls -S	Sort files or entries by size
+ls -l	List in a long format. Includes file mode, owner and group name, date and time file was modified, pathname, and more
+ls -l /	List of the file system from root with symbolic links
+ls -lt	List the files sorted by time modified (most recent first)
+ls -lh	Long listing with human readable file sizes in KB, MB, or GB
+ls -lo	List the file names with size, owner, and flags
+ls -la	List detailed directory contents, including hidden files
+
+//// File Size and Disk Space
+
+du	List usage for each subdirectory and its contents
+du -sh [folder]	Human readable output of all files in a directory
+du -s	Display an entry for each specified file
+du -sk* | sort -nr	List files and folders, totaling the size including the subfolders. Replace sk* with sm* to list directories in MB
+df -h	Calculate your system's free disk space
+df -H	Calculate free disk space in powers of 1,000 (as opposed to 1,024)
+
+
+//// File and Directory Management
+
+mkdir <dir>	Create new folder named <dir>
+mkdir -p <dir>/<dir>	Create nested folders
+mkdir <dir1> <dir2> <dir3>	Create several folders at once
+mkdir "<dir>"	Create a folder with a space in the filename
+rmdir <dir>	Delete a folder (only works on empty folders)
+rm -R <dir>	Delete a folder and its contents
+touch <file>	Create a new file without any extension
+cp <file> <dir>	Copy a file to the folder
+cp <file> <newfile>	Copy a file to the current folder
+cp <file>~/<dir>/<newfile>	Copy a file to the folder and rename the copied file
+cp -R <dir> <"new dir">	Copy a folder to a new folder with spaces in the filename
+cp -i <file><dir>	Prompts you before copying a file with a warning overwrite message
+cp <file1> <file2> <file3>/Users/<dir>	Copy multiple files to a folder
+ditto -V [folder path][new folder]	Copy the contents of a folder to new folder. In here "-V" print a line of status for every file copied
+rm <file>	Delete a file (This deletes the file permanently; use with caution.)
+rm -i <file>	Delete a file only when you give confirmation
+rm -f <file>	Force removal without confirmation
+rm <file1> <file2> <file3>	Delete multiple files without any confirmation
+mv <file> <newfilename>	Move/rename
+mv <file> <dir>	Move a file to the folder, possibly by overwriting an existing file
+mv -i <file> <dir>	Optional -i flag to warn you before overwriting the file
+mv *.png ~/<dir>	Move all PNG files from current folder to a different folder
+
+//// Command History
+
+Ctrl + R	Search through previously used commands
+history n	Shows the previous commands you've typed. Add a number to limit to the last n items
+![value]	Execute the last command typed that starts with a value
+!!	Execute the last command typed
+
+////Permissions
+
+ls -ld	Display the default permission for a home directory
+ls -ld/<dir>	Display the read, write, and access permission of a particular folder
+chmod 755 <file>	Change the permission of a file to 755
+chmod -R 600 <dir>	Change the permission of a folder (and its contents) to 600
+chown <user>:<group> <file>	Change the ownership of a file to user and group. Add -R to include folder contents
+
+//// Processes
+ps -ax	Output currently running processes. Here, a shows processes from all users and x shows processes that are not connected with the Terminal
+ps -aux	Shows all the processes with %cpu, %mem, page in, PID, and command
+top	Display live information about currently running processes
+top -ocpu -s 5	Display processes sorted by CPU usage, updating every 5 seconds
+top -o rsize	Sort top by memory usage
+kill PID	Quit process with ID <PID>. You'll see PID as a column in the Activity Monitor
+ps -ax | grep <appname>	Find a process by name or PID
+
+//// Network
+
+ping <host>	Ping host and display status
+whois <domain>	Output whois info for a domain
+curl -O <url/to/file>	Download file via HTTP, HTTPS, or FTP
+ssh <username>@<host>	Establish SSH connection to <host> with user <username>
+scp <file><user>@<host>:/remote/path	Copy <file> to a remote <host>
+arp -a	View a list of all devices on your local network. It will show you the IP and MAC address of all the devices
+ifconfig en0	View your device IP and MAC address
+traceroute [hostname]	Identify the path and the hops traversed by the packets from your device to the destination address
+
+//// Homebrew
+
+brew doctor	Check brew for potential problems
+brew help	List of useful homebrew formula and cask commands
+brew install <formula>|<cask>	Install a formula or cask
+brew uninstall <formula>|cask>	Uninstall a formula or cask
+brew list --formula	List only installed formulas
+brew list --cask	List only installed cask
+brew deps <formula>|<cask>	List all the dependencies of a formula or cask
+brew search text|/regex/	Search formula or cask through regex
+brew upgrade <formula>|<cask>	Upgrade the formula or cask
+brew outdated <formula>|<cask>	Search for outdated formula or cask
+brew outdated --formula	Search for outdated formula
+brew outdated --cask	Search for outdated cask
+brew pin [installed_formula]	Pin a formula from getting upgraded
+brew unpin [installed_formula]	Unpin to upgrade a package
+brew cleanup	Remove stale lock files and outdated packages for all formula and casks.
+
+//// Environment Variable or Path
+
+printenv	Display a list of currently set environment variables. Also tells you which shell you're using
+$echo	Tells the terminal to print something and show it to you
+echo $PATH	Check the value of the PATH variable which storea a list of directories with executable files
+echo $PATH >path.txt	Export the path directory to a text file
+export PATH=$PATH:absolute/path to/program/	Execute a program via terminal only in your current session. If you use a program regularly, add the path to shell configuration file.
+
+////Search
+
+find <dir> -name <"file">	Find all files named <file> inside <dir>. Use wildcards (*) to search for parts of filenames
+grep "<text>" <file>	Output all occurrences of <text> inside <file> (add -i for case insensitivity)
+grep -rl "<text>" <dir>	Search for all files containing <text> inside <dir>
+Output
+cat <file>	Output the content of <file>
+less <file>	Output the contents of <file> using the less command that supports pagination and more
+head <file>	Output the first 10 lines of <file>
+<cmd> > > <file>	Appends the output of <cmd> to <file>
+<cmd> > <file>	Direct the output of <cmd> into <file>
+<cmd1> | <cmd2>	Direct the output of <cmd1> to <cmd2>
+
+> nazwapliku.txt - tworzenie pliku
+about "tekst" nazwa pliku
+
+
+
+https://www.macupdate.com/how-to/mac-terminal-commands-list
+
+Mac Terminal Commands List
+
+man [command] - manual - pomoc
+
+clear - czyści terminal
+
+sudo [command] - superuser, admin, some commands require you to be a superuser.
+
+history - The Terminal keeps a history of all the commands you have entered
+
+history -c - Deletes the command history of the Terminal
+
+pwd - Print working directory (Outputs the address of the current directory )
+
+ls - Displays the names of files and subdirectories containing in the folder
+
+ls -l - Lists in the long format. Includes information like file mode, owner,
+group name and many more
+ls -al - Lists detailed directory contents including hidden files.
+
+
+Change Directory commands
+
+cd - The following commands will let you change the directory that you are
+currently working in. This is especially useful when selecting the directory you want to run a command in.
+
+cd [folder name]
+Change directory (If the directory you would like to navigate to is not in the current directory, the complete file address is required )
+
+cd ..
+Move up to the parent directory
+
+cd ../..
+Move up two levels (Could be extended to as many levels as possible by adding ../)
+
+cd ~
+Go to Home Directory
+
+/ - root
+
+File and Directory management - create, edit, and delete directories and folders
+
+mkdir <dir>
+Create a new subdirectory in the current directory
+
+mkdir <dir1> <dir2> <dir3>
+Create several directories at once.
+
+mkdir “<dir>”
+Create a folder with a space in its name
+
+rm -R <dir>
+Remove a directory and its contents
+
+cp -R <dir> <”newdir”>
+Copy a folder to another folder with spaces in its name
+
+touch <file>
+Create a new file
+
+nano <file>
+Opens a Terminal file editor. You can make changes to your files right from the Terminal.
+
+cp <file> <dir>
+Copy a file to a directory
+
+cp <file> <newfile>
+Copy a file to the current directory with the name given as <newfile>
+
+rm <file>
+Remove a file completely. This will remove it completely from the system so be careful when using this command.
+
+rm -i <file>
+Deleting a file after providing confirmation.
+
+mv <file> <newfile>
+Move a file to another file/ Rename a file
+
+mv <file> <dir>
+Move a file to a folder and will overwrite existing files
+
+mv *.txt <dir>
+Move all text files of the current folder to a different folder
+
+
+Relevent reading: How to correctly uninstall apps on Mac
+Permission Management
+Changing permissions of files and folders is important to prevent unauthorized access to the resources. You can provide permissions for reading, writing, and executing to the owner, a group or others.
+To view permissions of a file you can use ls -l command that we talked about in the List Directory commands section. This will list all files and folders in the long format. On the left-most column, you will see a notation as below.
+rw-r--r-- OR drw-r-xr-x
+There are nine slots with three groups for each type of user; owner, groups, and others. In the first example rw-r--r--, the owner has read (r) and write (w) permissions but has no execute (x) permission. Both groups and others only have read (r) permission.
+In the second case, drw-r-xr-x, apart from the usual permission sets there is a d which represents that this is a directory.
+Before moving on to the commands, you have to be familiar with octal permission notation
+No permission
+Execute
+Write
+Write and Execute
+Read
+Read and Execute
+Read and write
+Read, Write and execute
+0
+1
+2
+3
+4
+5
+6
+7
+---
+--x
+-w-
+-wx
+r--
+r-x
+rw-
+rwx
+The Terminal application allows you to set octal notation permissions for files and directories. Let’s look at what commands you can use.
+ls -l
+View permissions of a file or directory
+
+chmod 500 <file>
+Change the permissions of a file to 500 (r-x------)
+
+chmod -R 600 <dir>
+Change the permissions of a folder and its contents (drw-------)
+
+chown <user> <file>
+Change the owner of the file
+
+chown <user>:<group> <file>
+Change both the owner and the group of the file
+
+Process Management
+The Terminal allows you to view the processes that are currently running on your system, examine their resource usage, and kill them. These commands basically act as a replacement for the Activity Monitor GUI application.
+
+ps -ax
+Gives you a detailed view of every process that is running in the system. It includes information like the PID (Process ID), elapsed time running, the process name, and location.
+
+ps -ax | grep <application name>
+Allows you to view information about a specified application. The pipe symbol (|) takes the output from the first command and provides it as an input to the grep function.
+
+top
+Displays real-time information about the processes that are running on the system
+
+kill PID
+Once you find the PID from the ps -ax command, you can kill the process using this command.
+
+Network Management
+While all the above tasks could be achieved using GUI applications, the easiest and the most convenient way to configure your network and gather information about your network is through the Terminal.
+There are several useful Terminal applications that will help you in this regard.
+ifconfig
+
+While there are many uses for this command, the most common is to check your IP address
+ping <host>
+Test whether you can make a connection to the host. The host could be the IP address of a device connected to your network or a web domain
+
+netstat
+Lists all your current incoming and outgoing connections.
+
+whois <domain>
+The output is the whois info of the domain. The information includes basic contact details, Name Servers, and much more
+
+arp -a
+View a list of all active devices on your local network. It will show you the IP and MAC addresses of all the devices.
+
+traceroute <host>
+This is an important troubleshooting tool. It traces the path, packets go through. If your connection with the host is not established, you can pinpoint the exact location at which the packets do not pass.
+
+curl -O <url to file>
+If you need to download a file from the internet without a browser curl gives you the option to download over HTTP, HTTPS or FTP
+
+Search commands
+Searching through your Mac is easy using the command line using the following commands.
+find <dir> -name <file>
+Find the file in the specified directory
+
+find . -name “*.jpg”
+Find all files with the jpg extension in the current directory.
+
+
+
+
+///////
+ https://www.flynerd.pl/2018/06/20-polecen-terminala-unix-podstawowe-komendy-linux-ktore-trzeba-znac.html
+System plików to miejsce trwałego przechowywania danych w systemie UNIX. Każda bezpośrednia ścieżka do pliku wygląda podobnie:
+
+/user/katalog/podkatalog/plik.rozszerzenie
+np.
+/rita/Desktop/Pictures/sea.png
+Intucyjnie jest to dla nas zrozumiałe. Na moim pulpicie znajduje się katalog Pictures zawierający obrazek sea.png.
+Jednak zapis ten nie jest przypadkowy. Wynika z faktu, że system plików ma strukturę hierarchiczną, a początkiem jest zawsze katalog główny zwany root i oznaczany symbolem: /.
+
+
+* – zastępuje dowolny ciąg znaków
+? – oznacza dowolny jeden znak
+[] – zastępuje jeden znak, ale sposród znaków podanych w nawiasie
+
+Załóżmy, że przeszłam do folderu Pictures, gdzie mam bardzo wiele obrazków zapisanych pod różnymi nazwami np. image01, image1, image2, img1, img2, img3, picture1, picture2 itp.
+
+Załóżmy, że chcę znaleźć tylko te pliki, których nazwa zaczyna się na img. Stąd połączę img z gwiazdką:
+
+$ ls img*
+img1  img2  img3
+Mogę też wyszukać obrazki, które zaczynają się dwoma literami im a kończą cyfrą 1:
+
+$ ls im*1
+image01  image1  img1
+albo wszystkie, które są zakończone cyfrą 1 (czyli zaczynają się dowolnym ciągiem znaków i występuje 1 na końcu:
+
+$ ls *1
+image01  image1  img1  picture1
+Możemy też wyszukać takie pliki, w których nazwa to image, a kończą się dowolnym, jednym znakiem:
+
+$ ls image?
+image1  image2
+To samo uzyskamy zadając zbiór cyfr w nawiasie – [12]:
+
+$ ls image[12]
+image1  image2
+Wzorców uogólniających jest znacznie więcej, ale te trzy podstawowe wystarczą nam na start.
+
+
+cat – łączenie plików
+$ cat plik1.txt plik2.txt
+
+Powyższy przykład wyświetli na ekranie połączone dwa pliki.
+Możemy wynik tego działania zapisać do nowego pliku:
+$ cat plik1.txt plik2.txt > plik3.txt
+
+Linux cat: konkatencja i zapis do pliku
+Komenda $ cat > sample.txt pozwala na bezpośrednie wypełnienie pliku z konsoli. Możemy napisać dowolny ciąg znaków, a następnie zapisać zmiany i wyjść za pomocą (w zależności od systemu) Ctrl+D / Ctrl+C / Cmd + C.
+
+$ cat > sample1.txt
+...
+$ ls
+
+Desktop  Documents  Downloads  new_file.txt  Pictures  sample1.txt  Videos
+
+Znak > oznacza przeadresowanie standardowego wyjścia. Prościej mówiąc, jeśli naszym urządzeniem standardowego wyjścia jest monitor. Napisane zdanie zostałoby tylko wypisane na ekranie. Przekierwując wyjście do pliku – tworzymy nowy plik i zapisujemy w nim to, co byłoby tylko wyświetlone przez cat.
+
+Dlatego też, jeżeli chcemy utowrzyć czysty plik, możemu zupełnie pominąć polecenie cat i utworzyć nowy, pusty plik w ten sposób:
+
+$ > sample2.txt
+$ ls
+Desktop  Documents  Downloads  new_file.txt  Pictures  sample1.txt  sample2.txt  Videos
+9. cp – skopiuj
+
+Do kopiowania plików słóży polecenie cp (Copy). Możemy utworzyć kopię pliku w tym samym folderze pod nową nazwą
+
+$ ls
+Desktop  Documents  Downloads Pictures  sample.txt  Videos
+$ cp sample.txt new_sample.txt
+$ ls
+Desktop  Documents  Downloads  new_sample.txt  Pictures  sample.txt  Videos
+Linux cp: kopiowanie przyjmuje 2 parametry: nazwę lub ścieżkę kopiowanego pliku/katalogu oraz nazwę lub ścieżkę miejsca, do którego kopiujemy
+Możemy też utworzyć kopię pliku pod tą samą nazwą, ale w podkatalogu:
+
+$ cp sample.txt Pictures
+Polecenie skopiuje plik sample do folderu Pictures pod nazwą sample.txt
+
+Możemy też uworzyć kopię pliku, pod nową nazwą, ale w podkatalogu:
+
+$ cp sample.txt Pictures/new_sample.txt
+Polecenie skopiuje plik sample do folderu Pictures pod nazwą new_sample.txt
+
+Linux cp z opcją -rpozwala również kopiować całe foldery:
+
+$ cp -r Pictures New_Pictures
+10. mv – przenieś
+
+Polecenie mv (Move) służy to przeniesienia pliku do innego folderu.
+
+$ mv sample.txt Documents
+Linux mv: przenoszenie i lub zmiana nazwy
+Można za jego pomocą również zmienić nazwę pliku:
+
+$ mv sample.txt new_file.txt
+11. rm – usuń
+
+Kiedy kończymy pracę z plikiem i chcemy go usunąć wystarczy użyć komendy rm (Remove):
+
+$ rm sample.txt
+Linux rm: usuwanie plików i folderów
+Z opcją -r usuniemy także katalogi – tak samo jak rmdir.
+
+Procesy
+
+Każdy program, który działa na komputerze nazywany jest procesem. Na pewno macie programy, które startują wraz z uruchomieniem komputera – antywirus, program do aktualizacji, skype czy slack – są to przykłady procesów uruchamianych ze startem, ale jest też sporo, o których nie macie pojęcia a są konieczne do działania systemu.
+
+Każdy proces w systemie ma swój identyfikator, za pomocą, którego można go jednoznacznie wskazać, taki numer nazywa się PID – process IDentifier.
+
+Spotkaliście się kiedyś z sytuacją, że uruchominy program nie dało się w żaden
+sposób zamknąć – nie reagował na klikanie, prawy przycisk myszy czy skróty klawiaturowe? Za pomocą PID można proces znaleźć i skutecznie zabić – zakończyć jego pracę.
+
+
+kill – zakończ proces
+
+Dowolny proces możemy zakończyć za pomocą polecenia kill podając jako argument PID procesu, który chcemy usnuąć
+
+$ kill 202
+
+Tym poleceniem wysłałam sygnał – tutaj zakończenia do procesu 317 – u mnie przeglądarki. Może się jednak zdarzyć, że proces nie zostanie zakończony, gdyż czeka na inny proces np. zakończenie zapisu, lub po prostu mamy problem z „zawieszonym” programem i chcemy go raz, a skutecznie zakończyć.
+
+W takim wypadku możemy przesłać opcję -9 – sygnał bezwarunkowego zakończenia procesu.
+
+$ kill -9 202
+Linux kill: użycie polecenia z przełącznikiem -9 spowoduje natychmiastowe zamknięcie, ale bez zapisania pracy!
+Narzędzia pomocnicze
+
+Unix udostępnia nam wiele komend i programów pomocniczych, które przyspieszają pracę – przeszukiwanie katalogów czy dostęp do plików.
+
+14. locate – zlokalizuj
+
+Metoda locate, która często jest najprostrzą i najszybszą metodą do znalezienia lokalizacji pliku lub folderu o podanej nazwie. Wielkość liter ma znaczenie!
+
+$ locate Downloads
+~/rita/Desktop/Downloads
+możemy też zmusić locate do policzenia (count) liczby trafień:
+
+$ locate -c Downloads
+1
+Niestety metoda ta, chociaż jest bardzo szybka, ma też wadę – nie odnosi się bezpośrednio do drzewa systemu plików, a korzysta z pewnego rodzaju referencji (bazy) plików. Może się, więc zdarzyć, że metoda znajdzie plik, który został już usunięty (a jego referencja jeszcze nie) lub nie znajdzie pliku, który jeszcze nie pojawił się w bazie (wymaga uruchomienia sudo updatedb).
+
+15. find – znajdź
+
+Bardziej popularna metoda do wyszukiwania plików i folderów to find. Przeszukuje drzewo katalogów, aby znaleźć pliki i foldery spełniające warunek.
+
+Wylistuj pliki w folderze i pofoldery
+
+Bez parametrów polecenie wyświetli listę wszystkich plików w bieżącym katalogu, a także podkatalogi w bieżącym katalogu.
+
+$ find
+Szukanie danego folderu lub ścieżki
+
+Poniższe polecenie wyszuka wszystkie pliki w katalogu pod_folder w bieżącym katalogu.
+
+$ find ./pod_folder
+
+Używając przełącznika -name możemy wyszukiwać pliki po nazwie. Pamiętacie, że wzorzec * – oznacza wybierz wszystko?
+
+Możemy te informacje połączyć i wyszukać wszystkie pliki ruby znajdujące się w naszym folderze i jego podfolderach:
+
+$ find -name '*.rb'
+
+Wyszukiwanie tylko plików lub folderów
+Czasami możemy chcieć znaleźć tylko pliki to zadanej nazwie lub tylko foldery. Do tego służy przełącznik -type (f – file / d -directory).
+
+W naszym folderze znajduje się zarówno plik xyz, jak i podfolder o takiej samej nazwie:
+
+$ find -name 'xyz*'
+./xyz.txt
+./xyz
+$ find -type f -name 'xyz*'
+./xyz.txt
+$ find -type d -name 'xyz*'
+./xyz
+
+zec (u nas 'hello’) jest podawany jako wyrażenie regularne, które pozwala na dopasowanie jednego lub więcej wyrazów / ciągów znaków, służą do tego znaki lub wyrażenia specjalne np.
+
+. – kropka zastępuje dowolny 1 znak tekstu
+[abc] – oznacza wstawienie dowolnego znaku spośród podanych – a,b, lub c
+[a-z] – oznacza dowolny znak z zakresu a do z
+[^] – zaprzeczenie np. [^aA] – oznacza dowolny znak nie będący a lub A, natomiast [^a-z] oznacza dowolny znak różny od a do z
+^ – niestety tutaj mała zmyłka – sam znak ^ oznacza początek linii
+$ – oznacza koniec linii
+Wszystko wygląda w porządku, ale co jeśli chcemy wyszukać tekst na podstawie znaku, który jest znakiem specjalnym?
+Wystarczy ten znak poprzedzić symbolem backslash \ np. \* oznacza gwiazdkę, a nie wzorzec: dopasuj wszystko.
+
+Opcje – polecenie grep
+
+20. exit – zamknij terminal
+
+
+
+Kilka słów o standardowym wejściu / wyjściu
+
+Każdy proces domyślnie korzysta ze standrdowego wejścia/wyjścia – wejściem jest klawiatura terminala, czyli to czym wprowadzamy komendy i dane, natomiast wyjściem – ekran terminala, na którym dane są wyświetlane.
+
+Przeadresowanie standardowego wejścia następuje przez przekierowanie wyniku wykonanego polecenia do pliku zamiast na ekran komputera.
+
+polecenie < plik – przeadresowanie standardowego wejścia = pobranie danych wejściowych z innego źródła niż klawiatura np. pobranie z parametrów z pliku dla komendy
+
+polecenie > plik – przeadresowanie standardowego wyjścia – wynik polecenia zostanie wysłany do pliku (zostanie utworzony nowy lub istniejący plik o tej nazwie zostanie nadpisany)
+
+jeżeli nie chcemy stracić zawartości pliku to warto skorzystać z
+polecenie >> plik – przeadresowanie standardowego wejścia, wynik polecenia zostaje wysłany do pliku i dopisany na końcu
+
+$ history > history.txt
+Powyższe polecenie zapisze nam historię poleceń do pliku.
+
+Wyświetl 5 pierwszych poleceń z pliku history.txt i przeadresuj do nowego pliku np. history5.txt.
+
+Potoki
+
+Przeadresowanie wejścia / wyjścia możemy wykorzystać do tworzenia potoków. W ten sposób, aby otrzymać interesujący nas wynik angażujemy kilka róznych procesów. Każdy kolejny proces w potoku bierze dane wejściowe z poprzedniego procesu (przeadresowane wyjście).
+
+Zamiast wyjście polecenia history przeadresować do pliku użyjmy potoku do wyświetlenia pierwszych 5 komend:
+
+$ history | head -5
+Możemy też znaleźć wszystkie użyte do tej pory polecenia zawierające ls:
+
+$ history | grep ls
+i ostatecznie wyświetlić tylko pierwsze 10 takich poleceń:
+
+$ history | grep ls | head
+możemy też ten wynik zapisać do pliku:
+
+$ history | grep ls | head > history.txt
+a jeśli nie chcemy tracić (nadpisać) dotychczasowej zawartości to skorzystać z >> .
+
+Analogicznie do powyższego, do pliku history.txt dopisz 15 ostatnio użytych komend find.
+
+Za pomocą polecenia ps znajdź na liście procesów linie zawierające nazwy twojej przeglądarki (o ile masz ją uruchomioną).

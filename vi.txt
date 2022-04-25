@@ -1,0 +1,77 @@
+
+vi nazwa pliku - otworzy się w vi
+open -a TextEdit introduction.txt - text edit otwiera plik
+
+>> nazwa pliku - tworzy nowy plik o określonej nazwie
+
+Edytor vi / vim
+
+Co prawda poznaliśmy już podstawowe komendy Linux, warto wspomnieć, że terminal posiada wbudowany edytor – Vi. Vi oraz jego bardziej popularny klon Vim występuje we wszystkich odmianach systemów opartych na UNIXie i od samego początku – czyli lat 70, charakteryzuje się jednolitością implementacji niezależnie od maszyny, na której jest uruchamiany. Oznacza to, że spotkamy go zarówno otwierając terminal Linux, łącząc się z serwerem po ssh, jak i będzie domyślnie dostępny w terminalu Mac i za każdym razem obsługuje się go tak samo. Dzięki temu, Vim jest powszechnie używany przez administratorów, zaawansowanych użytkowników i też wielu programistów.
+
+Uruchomienie
+
+Vim uruchamiamy poleceniem vi lub vim, jednak zdecydowanie wygodniej jest otworzyć tryb edycji podając vi nazwa_pliku. Jeżeli plik nie istnieje, to zostanie automatycznie utworzony.
+
+$ vi new_file.txt
+vim edytor linux konsola
+
+Vim obsługujemy całkowicie z klawiatury. Możemy na razie zapomnieć o myszce.
+Zaraz po uruchomieniu jesteśmy w trybie poleceń, co dla niektórych może być trochę kłopotliwe. Vim działa w dwóch trybach – tryb wstawiania (edycji) oraz tryb komend (wpisywania poleceń).
+
+Aby z trybu poleceń przejść do trybu edycji – pisania należy nacisnąć na klawiaturze i (inset) lub a (append). Polecenia w edytorze Vim nie wymagają zatwierdzenia Enterem, więc po wpisaniu i możemy natychmiast zacząć wpisywać dowolne zdanie.
+
+Powrót z trybu edycji do trybu komend następuje przez naciśnięcie klawisza Esc.
+VI
+Przykładowe polecenia dostępne w Vimie w trybie poleceń:
+
+a – pisanie za miejscem postawienia kursora
+i – wpisywanie tekstu przed kursorem
+A – dopisanie na końcu aktualnej linii
+I – wdopisanie na początku aktualnej linii
+o – dodanie nowej linii poniżej aktualnej (to samo co postawienie kursora na końcu linii i dodanie znaku enter w trybie edycji)
+O – dodanie nowej linii powyżej aktualnej (to samo co postawienie kursora na początku lini i dodanie entera)
+v – zaznaczenie linii tekstu (v oraz poruszanie się strzałkami ←, →)
+u – anulowanie ostatniej zmiany
+R – zastępowanie tekstu
+s – zastąpienie znaku wskazanego przez kursor
+S – zastąpienie aktualnej linii
+c – zmiana zaznaczonego tekstu
+C – zmiana do końca linii
+. – powtórzenie polecenia
+gg – powrót do pierwszej linii
+/ – wyszukiewanie miejsca wystąpienia ciągu znaków w tekście
+Przetestuj je wszystkie!
+(po każdorazowym wykonaniu znowu jesteś w trybie edycji – kliknij Esc, by znowu być w trybie komend)
+
+
+Z edytora Vim można wyjść na wiele różnych sposobów. Po pierwsze, jeśli mnie posłuchaliście i otworzyślicie Vim za pomocą vi / vim nazwa_pliku to wystarczy w trybie poleceń wpisać z klawiatury ZZ – wykona zapis i wyjście.
+
+Ouh, nie działa?
+
+Pewnie mnie nie posłuchaliście i otworzyliście go od razu vim. W takim razie
+najpierw musicie podać nazwę do zapisu – w trybie poleceń dwukropek + w czyli :w nazwa_pliku a następnie :q – pozwoli na opuszczenie edytora.
+
+Skąd to zamieszanie z wychodzeniem z vi? No cóż, jeszcze przed chwilą, gdybyście przypadkiem dostali się w sam środek vim pewnie też mielibyście niemałą zagwostkę. Co więcej sposobów na zapis i wyjście jest więcej niż wyżej wymienione:
+
+
+:w – zapisz plik
+
+:w nazwa – zapisz plik pod nową nazwą (utwórz nowy lub kopię)
+
+:w! – wymuś zapis pliku (np. plików tylko do odczytu)
+
+:wq – zapisz i wyjdź z pliku
+
+:q – wyjdź o ile nie dokonano zmian w pliku od ostatniego zapisu
+
+:q! – wymuś wyjście bez zapisywania zmian w pliku
+
+:x – zapisz i wyjdź (bez zapisania przy braku zmian)
+
+:x! – zapisz (wymuś zapis) i wyjdź
+
+ZZ – wyjście z edytora z zapisaniem pliku
+
+W razie jakiś wątpliwości zawsze można sprawdzić:
+
+:help – pomoc programu

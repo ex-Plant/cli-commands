@@ -1,0 +1,132 @@
+Wchodzimy do folderu, w którym będzie repo i inicjalizujemy git'
+.gitconfig znajduje się w katalogu Users/konradantonik
+kropka przed nazwą pliku oznacza, że plik jest ukryty
+
+
+git config --global user.name "Konrad Antonik"
+git config --global user.email konradantonik@gmail.com
+
+git init - inicjalizacja
+
+git status
+
+git add
+
+git commit -m "opis commita zazwyczaj opis tego co sie zmieniło"
+
+git commit -a - dodajemy commit od razu wraz ze stanem
+
+git log - informacje o poszczególnych commitach
+
+GIT PRZYJMUJE 4 statusy plików: - przechowalnie można pominąć i bezpośrednio
+dokonać committu
+- śledzony niemodyfikowany
+- śledzony w stejcie - przchowalnia
+- nieśledzony
+
+git add --all - wszystkie  pliki dodane do przechowalni
+git add . to samo co wyżej, kropka oznacza all - wszystkie  pliki dodane do
+przechowalni
+
+git commit -a - zapisz wszystkie śledzone, które modyfikowaliśmy
+
+git mv staraNazwaPliku nowaNazwaPliku -
+
+git checkout - przywracanie poprzedniej wersji
+
+czyli, w przypadku zmiany dodajemy plik poprzez add następnie git commit
+wpisujemy commita zapisujemy wciskając esc a następnie :w - zapis
+Wychodzimy klikając ZZ
+
+Pierwszy commit dobrze nazwać "initial commit".
+
+Drugi raz napisanie tego samego usuwa dane, ewentualnie możemy użyć polecenia
+unset n
+
+Uwaga w jakim folderze aktualnie się znajdujemy!
+
+Czyli podsumowując dodajemy sobie jakiś stan pliku, i dalej możemy na nim
+pracować. Dopiero po dodaniu jakiegoś stanu pliku możemy go zcommitować. Jeden
+plik może mieć kilka stanów, testujemy sobie po prostu różne wersje.
+
+git diff - polecenie, które pozwala nam zobaczyć / porównać jak zmieniły się
+pliki
+
+git checkout -- nazwapliku - cofniemy zmianę z katalogu roboczego, czyli po
+prostu poprzednią, która została dodana.
+Jeśli usuwamy plik to taką operację tez musimy zapisać w repozytorium.
+git rm - usunięcie pliku jednocześnie z katalogu roboczego oraz z repozytorium,
+ale nadal możemy odzyskać go z poprzednich commitówne
+git - reset - przywracamy plik w indeksie, czyli w ostatnim commicie w
+git checkout -- nazwapliku plik powraca do katalogu roboczego oraz
+
+Czyli mamy staging area inaczej mówiąc index
+Stany plików
+Repozytorium
+
+git init - własne repozytorium
+git clone - klonowanie repozytorium np. z githuba
+
+git clone "miejsce gdzie znajduje się repozytorium" "nowe miejsce"
+git clone gitTestRepo gitClonedRepo
+git clone gitTestRepo gitClonedRepo
+
+Jak sklonować repozytorium z githuba?
+Z githuba kopiujemy adres https i ta sciezka jest repozytorium ktore bedziemy
+klonowac
+.gitignore - czyli pliki, których nie chcemy uwzględniać w naszym repozytorium -
+ nie będą śledzone, np. node modules, po prostu są to pliki łatwe do
+ odtworzenia, duże etc...
+ Klonowanie zapewnia nam dostęp do wszystkich commitów.
+
+ .gitignore - możemy tam dodać wszystko co chcemy i zostaną zignorowane przez
+ nasze repozytorium, pod warunkiem, że są to pliki nieśledzone,
+ musimy usunąć takie pliki z naszego indexu.
+ Najczęściej
+ gitignore tworzymy w momencie gdy tworzymy nowy plik.
+ Wchodzimy do .gitignore i tam wpisujemy nazwę pliku, którego nie chcemy śledzić
+  zazwyczaj z komentarzem w formie #komentarz - plik nieśledzony
+ . Do .gitignore możemy też wrzucić plik .gitignore ale zazwyczaj chcemy go
+ śledzić.
+ Jeśli wpiszemy tam plik, który już dotychczas był śledzony to nie zadziała.
+ Poradzimy sobie z tym za chwilę.
+
+ git commit --amend - modyfikacja komitu, możemy zmienić np. sam opis commita
+
+ Git nie śledzi katalogów jeśli nic w nich nie ma. Natomiast jeśli nie chcemy
+ śledzić jakiegoś folderu, w z zawrtością to wpisujemy go do .gitignore z nazwą
+ pooprzedzoną backslashem np. /src
+
+ W jaki sposób git magazynuje dane, które w nim umieszczamy?
+ W momencie gdy używamy komendy git add git tworzy w folderze objects jakiś
+ obiekt w formie hasha sh1
+ Jeśli chcemy wyświetlić zawartość takiego hasha możemy użyć komendy
+ git cat-file -p nazwafolderu hashpliku
+ flaga -p - odczytaj
+ flaga -t - typ
+ nazwa folderu to początek hashupiku(piszemy razem)
+
+ Repozytorium przchowuje kilka typów danych.
+ Blob dla plików - obiekty binarne
+
+ Git tworzy jeden podfolder z oplikiem, który powstaje w momencie add
+ Drugi podfolder/plik to nasz committ
+ Znajduje się w nim obiekt drzewo, który pozwala nam na identyfikacje plików, z
+ którymi commit jest związany. Tzn. ten obiekt nie znajduje się w commicie ale
+ jest połączenie.
+ Commit sam w sobie może przechowwyac informacje np. kto jest autorem commita,
+ kto edytował commit
+ metadane i wskazanie na obiekt drzewa.
+ Kolejny podfolder to właśnie drzewo - zawiera ono referencje do plików.
+Git tworzy obiekty dla treści a nie dla nazw plików, czyli pusty plik nie pojawi
+ sie nam w folderze. Nasze drzewo zawiera referencje do wszystkich plików w
+ projekcie.
+ Kolejny obiekt to informacja o tym kto jest rodzicem danego commita (poprzedni
+ commit) - nie tworzy się przy pierwszym commicie, dopiero przy kolejnych.
+ Czyli podsumowując za każdym razem gdy robimy commit powstaje commit,
+ metadanymi i odwołaniem do rodzica i powstaje obiekt tree ktory zawiera
+ strukture naszego obiektu - gdzie plik się znajduje.
+
+ git hash-object nazwapliku - otrzymujemy hash naszego committu
+ hash nie jest zalezny od nazwy pliku ale od jego zawartości, to zawartość jest
+ hasowana
